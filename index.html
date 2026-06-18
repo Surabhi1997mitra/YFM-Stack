@@ -38,22 +38,68 @@ html,body{width:100%;height:100%;font-family:"Inter",sans-serif;background:#111;
 .slides-wrapper{flex:1;overflow:hidden;position:relative;}
 .slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .4s ease;overflow:hidden;}
 .slide.active{opacity:1;pointer-events:auto;}
-
 .eyebrow{font-size:10px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--orange-lt);display:block;margin-bottom:10px;}
 
 /* ══ SLIDE 1 — LAFE ══ */
-.s1{background:var(--navy);display:grid;grid-template-rows:auto 1fr;}
-.s1-top{padding:36px 60px 24px;border-bottom:1px solid rgba(255,255,255,0.07);}
-.s1-headline{font-family:"Playfair Display",serif;font-size:clamp(30px,4vw,54px);font-weight:700;color:#fff;line-height:1.1;}
+.s1{
+  background: linear-gradient(145deg, #1C2B4A 0%, #2A3F66 50%, #1C2B4A 100%);
+  display:grid;grid-template-rows:auto 1fr;
+}
+.s1-top{
+  padding:32px 60px 22px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+}
+.s1-headline{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(30px,4vw,52px);font-weight:700;
+  color:#fff;line-height:1.1;
+}
 .s1-headline em{font-style:italic;color:var(--orange-lt);}
-.s1-tagline{font-size:14px;color:rgba(255,255,255,0.45);font-weight:300;margin-top:8px;}
+.s1-tagline{
+  font-size:15px;color:rgba(255,255,255,0.55);
+  font-weight:300;margin-top:8px;letter-spacing:0.03em;
+}
+
 .s1-pillars{display:grid;grid-template-columns:1fr 1fr;}
-.pillar{padding:32px 48px;border-right:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;gap:12px;}
+.pillar{
+  padding:28px 44px;
+  border-right:1px solid rgba(255,255,255,0.08);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex;flex-direction:column;gap:10px;
+  position:relative;
+  background:rgba(255,255,255,0.02);
+  transition: background 0.3s;
+}
+.pillar:hover{background:rgba(255,255,255,0.05);}
 .pillar:nth-child(2n){border-right:none;}
 .pillar:nth-child(3),.pillar:nth-child(4){border-bottom:none;}
-.pillar-letter{font-family:"Playfair Display",serif;font-size:72px;font-weight:700;line-height:1;color:var(--orange);}
-.pillar-name{font-size:20px;font-weight:700;color:#fff;line-height:1.2;}
-.pillar-tag{font-size:13px;color:rgba(255,255,255,0.45);font-weight:300;}
+
+/* accent glow line per pillar */
+.pillar::after{
+  content:"";position:absolute;top:0;left:0;width:4px;height:100%;
+  background:var(--orange);opacity:0.6;
+}
+
+.pillar-row{display:flex;align-items:center;gap:16px;margin-bottom:4px;}
+.pillar-letter{
+  font-family:"Playfair Display",serif;
+  font-size:58px;font-weight:700;line-height:1;
+  color:var(--orange);flex-shrink:0;
+}
+.pillar-name{
+  font-size:21px;font-weight:700;color:#fff;line-height:1.15;
+  letter-spacing:0.01em;
+}
+.pillar-desc{
+  font-size:14px;line-height:1.65;
+  color:rgba(255,255,255,0.65);font-weight:300;
+  padding-left:4px;
+}
+/* highlight key words inside desc */
+.pillar-desc strong{
+  color:rgba(255,255,255,0.95);font-weight:600;
+}
 
 /* ══ SLIDE 2 — WHAT YOU GET ══ */
 .s2{background:var(--cream);display:flex;flex-direction:column;}
@@ -132,53 +178,24 @@ html,body{width:100%;height:100%;font-family:"Inter",sans-serif;background:#111;
 .s6-headline em{font-style:italic;color:var(--orange-lt);}
 .s6-sub{font-size:14px;color:rgba(255,255,255,0.4);font-weight:300;margin-top:8px;}
 .s6-grid{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
-.bonus{
-  padding:40px 36px;
-  border-right:1px solid rgba(255,255,255,0.07);
-  display:flex;flex-direction:column;gap:20px;
-  position:relative;overflow:hidden;
-  background:rgba(255,255,255,0.02);
-  transition:background .25s;
-}
+.bonus{padding:40px 36px;border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden;background:rgba(255,255,255,0.02);transition:background .25s;}
 .bonus:hover{background:rgba(255,255,255,0.05);}
 .bonus:last-child{border-right:none;}
 .bonus::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--orange),var(--orange-lt));}
-.bonus-num{
-  display:inline-block;
-  font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--orange);border:1px solid rgba(212,98,42,0.4);
-  padding:3px 10px;align-self:flex-start;
-}
+.bonus-num{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(212,98,42,0.4);padding:3px 10px;align-self:flex-start;}
 .bonus-ico{font-size:48px;line-height:1;}
 .bonus-title{font-family:"Playfair Display",serif;font-size:22px;font-weight:700;color:#fff;line-height:1.2;}
 .bonus-desc{font-size:13px;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.6;}
-.bonus-tag{
-  margin-top:auto;
-  align-self:flex-start;
-  background:transparent;
-  border:1px solid var(--orange);
-  color:var(--orange-lt);
-  font-size:10px;font-weight:700;letter-spacing:0.14em;
-  text-transform:uppercase;padding:5px 14px;
-}
-.s6-footer{
-  padding:20px 60px;
-  border-top:1px solid rgba(255,255,255,0.07);
-  display:flex;align-items:center;justify-content:space-between;
-  flex-shrink:0;
-}
+.bonus-tag{margin-top:auto;align-self:flex-start;background:transparent;border:1px solid var(--orange);color:var(--orange-lt);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:5px 14px;}
+.s6-footer{padding:20px 60px;border-top:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .s6-footer-brand{font-family:"Playfair Display",serif;font-size:20px;font-weight:700;color:#fff;}
 .s6-footer-brand span{color:var(--orange-lt);}
 .s6-footer-handle{font-size:11px;color:rgba(255,255,255,0.35);font-weight:400;letter-spacing:0.12em;text-transform:uppercase;}
-.s6-footer-cert{
-  font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--orange);border:1px solid rgba(212,98,42,0.4);padding:6px 16px;
-}
+.s6-footer-cert{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(212,98,42,0.4);padding:6px 16px;}
 </style>
 </head>
 <body>
 <div class="deck">
-
   <nav class="nav">
     <span class="nav-brand">Your<span>Fit</span>Mitra</span>
     <div class="nav-center">
@@ -198,28 +215,36 @@ html,body{width:100%;height:100%;font-family:"Inter",sans-serif;background:#111;
       <div class="s1-top">
         <span class="eyebrow">The L.A.F.E. Transformation System</span>
         <h1 class="s1-headline">Built Around <em>Your Life.</em></h1>
-        <p class="s1-tagline">Not the other way around.</p>
+        <p class="s1-tagline">Not a generic plan. Not a rigid template. A system designed around you.</p>
       </div>
       <div class="s1-pillars">
         <div class="pillar">
-          <div class="pillar-letter">L</div>
-          <div class="pillar-name">Lifestyle Mapping</div>
-          <div class="pillar-tag">Workouts around your real schedule</div>
+          <div class="pillar-row">
+            <div class="pillar-letter">L</div>
+            <div class="pillar-name">Lifestyle Mapping</div>
+          </div>
+          <div class="pillar-desc">Your workouts &amp; nutrition are built around your <strong>real schedule</strong> — not an imaginary perfect day.</div>
         </div>
         <div class="pillar">
-          <div class="pillar-letter">A</div>
-          <div class="pillar-name">Adaptive Programming</div>
-          <div class="pillar-tag">Plan evolves as your life evolves</div>
+          <div class="pillar-row">
+            <div class="pillar-letter">A</div>
+            <div class="pillar-name">Adaptive Programming</div>
+          </div>
+          <div class="pillar-desc">Your plan <strong>evolves as your life evolves.</strong> No rigid templates. No starting over.</div>
         </div>
         <div class="pillar">
-          <div class="pillar-letter">F</div>
-          <div class="pillar-name">Full Accountability</div>
-          <div class="pillar-tag">Daily coach support — never alone</div>
+          <div class="pillar-row">
+            <div class="pillar-letter">F</div>
+            <div class="pillar-name">Full Accountability</div>
+          </div>
+          <div class="pillar-desc"><strong>Daily coach support</strong> so you never feel lost, confused, or alone — especially on the hard days.</div>
         </div>
         <div class="pillar">
-          <div class="pillar-letter">E</div>
-          <div class="pillar-name">Embedded Habits</div>
-          <div class="pillar-tag">Results that outlast the program</div>
+          <div class="pillar-row">
+            <div class="pillar-letter">E</div>
+            <div class="pillar-name">Embedded Habits</div>
+          </div>
+          <div class="pillar-desc">The goal is <strong>results that outlast the program</strong> — habits built into your life, permanently.</div>
         </div>
       </div>
     </section>
@@ -448,7 +473,7 @@ html,body{width:100%;height:100%;font-family:"Inter",sans-serif;background:#111;
           <div class="s6-footer-brand">Your<span>Fit</span>Mitra</div>
           <div class="s6-footer-handle">@fit.mitra</div>
         </div>
-        <div class="s6-footer-cert">MIFI Certified Coach · CFT · CNS · CSS</div>
+        <div class="s6-footer-cert">Certified Coach · CFT · CNS · CSS</div>
       </div>
     </section>
 
